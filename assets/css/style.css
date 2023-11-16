@@ -1,0 +1,358 @@
+:root {
+    --primary-color: #1DB954;
+    --text-color: #fff;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+  }
+  
+  body {
+    background-color: #131313;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: unset;
+    object-position: 50% 45%;
+  }
+  
+  html {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .hidden {
+    display: none!important;
+  }
+
+  .player {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .background-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+  }
+  
+  
+  .player .icon-pause {
+    display: none;
+  }
+  
+  .player.playing .icon-pause {
+    display: inline-block;
+  }
+  
+  .player.playing .icon-play {
+    display: none;
+  }
+  
+  .dashboard {
+    height: 500px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  
+  
+  /* HEADER */
+  header {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  
+  header h4 {
+    color: var(--primary-color);
+    font-size: 16px;
+  }
+  
+  header h2 {
+    color: var(--text-color);
+    font-size: 38px;
+  }
+
+  header p {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 600;
+    display: inline;
+  }
+
+  header span {
+    color: #d3d3d3;
+    font-size: 16px;
+    padding-right: 5px;
+  }
+
+  /* CD */
+  .cd {
+    display: flex;
+    margin: 0 10px 0;
+  }
+  
+  .cd-thumb {
+    width: 225px;
+    /* padding-top: 100%; */
+    height: 225px;
+    border-radius: 50%;
+    background-color: #333;
+    background-size: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.17)
+  }
+  
+  /* CONTROL */
+
+  .control-bar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 16px;
+    background-color: #333;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 1440px;
+    border-radius: 4px 4px 0px 0px;
+    margin: 0 auto;
+  }
+  .control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 0 8px 0;
+    flex-basis: 40%;
+  }
+  
+  .control .btn {
+    color: #d3d3d3;
+    padding: 18px;
+    font-size: 18px;
+  }
+
+  .control .btn:not(:last-child) {
+    margin-right: 20px;
+  }
+  
+  .control .btn.active {
+    color: var(--primary-color);
+  }
+  
+  .control .btn-toggle-play {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+  }
+
+  .volume-options {
+    width: 40px;
+    padding: 18px 0 18px 20px;
+    font-size: 18px;
+    color: #d3d3d3;
+    
+  }
+
+  .volume-options div {
+    cursor: pointer;
+  }
+
+  .progress-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 50%;
+  }
+  
+  .progress {
+    width: 90%;
+    height: 6px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    border-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 15px;
+    width: 15px;
+    background-color: #1DB954;
+    border-radius: 50%;
+    border: 4px solid #1DB954;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+  }
+
+  #volume {
+    margin-left: 10px;
+    width: 75px;
+    background: linear-gradient(to right, #1DB954 100%, #d3d3d3 100%);
+    
+  }
+
+  .time {
+    margin: 0 10px;
+    font-size: 12px;
+    color: #999;
+    width: 25px;
+  }
+
+  
+  /* PLAYLIST */
+
+  .playlist-container {
+    background-color: rgba(19, 19, 19, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 -3px 7px rgba(0, 0, 0, 0.5);
+    padding: 10px 0 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .playlist-text {
+    display: block;
+    color: #d3d3d3;
+    font-size: 20px;
+    font-weight: 600;
+    max-width: 1440px;
+    margin: 10px auto; 
+    padding: 0px 0px 10px;
+  }
+
+  .playlist {
+    max-width: 1440px;
+    height: 290px;
+    margin: 0 auto;
+    overflow: auto!important;
+  }
+  
+  .song-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    padding-left: 8px;
+    cursor: pointer;
+  }
+
+  .song-item:hover {
+    background-color: #333;
+    border-radius: 4px;
+  }
+
+  .song-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .song-item.active {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+    border-radius: 4px;
+  }
+  
+  .song-item.active .song-control,
+  .song-item.active .song-index,
+  .song-item.active .song-singer,
+  .song-item.active .song-name {
+    color: #fff;
+  }
+
+  .song-item .song-index {
+    font-size: 16px;
+    font-weight: 600;
+    color: #999;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .song-item .song-thumbnail {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-size: cover;
+    margin: 0 8px;
+  }
+  
+  .song-item .song-infor {
+    flex: 1;
+    padding: 0 16px;
+  }
+  
+  .song-item .song-name {
+    font-size: 16px;
+    color: var(--text-color);
+  }
+  
+  .song-item .song-singer {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .song-item .song-control {
+    padding: 16px 8px;
+    color: #999;
+    font-size: 18px;
+  }
+
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #131313;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+  }
+  
