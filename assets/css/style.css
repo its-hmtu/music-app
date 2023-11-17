@@ -250,7 +250,6 @@
   .playlist-container {
     background-color: rgba(19, 19, 19, 0.9);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 -3px 7px rgba(0, 0, 0, 0.5);
     padding: 10px 0 100px;
     position: relative;

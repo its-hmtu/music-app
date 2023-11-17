@@ -393,7 +393,7 @@ const app = {
         setTimeout(function() {
             $('.song-item.active').scrollIntoView({
                 behavior: 'smooth',
-                block: 'nearest'
+                block: 'center'
             })
         }, 300)
     },
