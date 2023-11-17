@@ -5,6 +5,7 @@ const PLAYER_STORAGE_KEY = 'MUSIC_PLAYER';
 
 const player = $('.player');
 const cd = $('.cd');
+const header = $('header');
 const songName = $('header h2');
 const songSinger = $('header p');
 const cdThumbnail = $('.cd-thumb');
@@ -150,6 +151,38 @@ const app = {
         //     playingSongThumbnail.style.opacity = newHeaderWidth / headerWidth;
         // };
 
+        cd.onmouseover = function() {
+            header.style.background = 'rgba(19, 19, 19, 0.45)';
+            header.style.backdropFilter = 'blur(20px)';
+        }
+
+        cd.onmouseout = function() {
+            if (header.style.background === 'rgba(19, 19, 19, 0.45)' && header.style.backdropFilter === 'blur(20px)') {
+                setTimeout(() => {
+                    header.style.background = 'rgba(0, 0, 0, 0.05)';
+                    header.style.backdropFilter = 'blur(10px)';
+                }, 3000);
+            }
+        }
+
+        // on mouseover header or its child then set header background to rgba(0, 0, 0, 0.3)
+        header.onmouseover = function(e) {
+            if (e.target.closest('header h4') || e.target.closest('header h2') || e.target.closest('header p') || e.target.closest('header')) {
+                header.style.background = 'rgba(19, 19, 19, 0.45)';
+                header.style.backdropFilter = 'blur(20px)';
+            }
+        }
+
+        // on mouseout header or its child then set header background to rgba(0, 0, 0, 0.05)
+        header.onmouseout = function(e) {
+            if (e.target.closest('header h4') || e.target.closest('header h2') || e.target.closest('header p') || e.target.closest('header')) {
+                setTimeout(() => {
+                    header.style.background = 'rgba(0, 0, 0, 0.05)';
+                    header.style.backdropFilter = 'blur(10px)';
+                }, 3000);
+            }
+        }
+
         // Play/pause song
         playControl.onclick = function() {
             (app.isPlaying) ? audio.pause() : audio.play();
@@ -255,6 +288,7 @@ const app = {
         next.onclick = function() {
             (app.isRandom) ? app.randomSong() : app.nextSong();
             audio.play();
+            
         }
 
         // Prev song
@@ -414,7 +448,6 @@ const app = {
 
         this.render();
         this.updateActiveSong();
-        
     }
 
 }
