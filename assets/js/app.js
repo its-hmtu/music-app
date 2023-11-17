@@ -306,10 +306,12 @@ const app = {
             background.style.backgroundImage = `url('${this.currentSong.thumbnail}')`;
             background.classList.add('background-img');
             bgVideo.src = '';
+            bgVideo.classList.add('hidden');
         } else {
             bgVideo.src = this.currentSong.video;
+            bgVideo.classList.remove('hidden');
             background.classList.remove('background-img');
-        }
+        }   
 
         let onGoingMinute = Math.floor(audio.currentTime / 60);
         let onGoingSecond = Math.floor(audio.currentTime % 60);
